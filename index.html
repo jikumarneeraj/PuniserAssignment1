@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 1em;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background-color: #444;
+      padding: 0.5em;
+    }
+
+    nav a {
+      color: rgb(75, 227, 202);
+      text-decoration: none;
+      margin: 0 1em;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #28a745;
+    }
+
+    section {
+      padding: 2em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    section.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section img {
+      max-width: 400px;
+      border-radius: 20px;
+      margin-right: 20px;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      size: 2px;
+      border-radius: 50%;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      display: inline-block;
+      width: 80px;
+      height: 80px;
+      background-color: #444;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      color: #fff;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      background-color: #28a745;
+    }
+
+    .contact-details {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1 style="color: #d8d8a1;font-family: Cursive;">Neeraj's Portfolio</h1>
+  </header>
+  <div>
+        <nav>
+            <div>
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+  </div>
+  
+
+  <section id="home" class="active">
+    <img src="dp.png" alt="Person's Image">
+    <div style="align-content: center; align-self: center;">
+        <p style="font-weight: bold;">Hello Data Scientist,</p>
+      <h2>I'm <span style="color:  #ff004f;">Neeraj</span> Kumar</h2>
+      <p>I am an <span style="color: #ee8d32;">Information Technology</span> branch Student. <br><br>And also i am a purchasing <span style="color: #ee8d32;">Data Science</span> from <span style="color: #ff004f;">IIT Madras</span>.</p>
+    </div>
+  </section>
+
+  <section id="about">
+    <p style="font-weight: bold;">1. I have passed my <span style="color: #ff004f;">High School</span> Examination in the year <span style="color: #ee8d32;">2019</span> . <br>
+       <br>2. I have passed my <span style="color: #ff004f;">Intermediate </span>Examination in the year <span style="color: #ee8d32;">2021</span>. <br>
+       <br>3. Currently i am doing <span style="color: #ee8d32;">B.tech in Information Technology </span>along with this i am also purchasing <span style="color: #ee8d32;">Data Science</span> Degree.</p>
+  </section>
+
+  <section id="skills" style="text-decoration: none;">
+    <p style="font-weight: bold;"><u>1. <span style="color: #ff004f;">Group Leader</span>   : in Nilgiri House of IIT Madras. <br><br><br>
+        2. <span style="color: #ff004f;">Upper House Councile</span>    : member of IIT Madras. <br></u>
+    </p>
+  </section>
+
+  <section id="contact" style="margin-bottom: 10px;">
+    <div class="social-icons" style="margin-bottom: 50px;margin-right: 30px;">
+      <a href="mailto:neerajkumar1092005@gmail.com" target="_blank"> <img src="social.png" alt="Email"></a>
+      <a href="https://www.instagram.com/jikumarneeraj/" target="_blank"><img src="instagram.png" alt="Instagram"></a>
+      <a href="https://twitter.com/yourTwitter" target="_blank"><img src="twitter (1).png" alt="Twitter"></a>
+      <a href="https://www.linkedin.com/in/neeraj-kumar-b451b1278/" target="_blank"><img src="linkedin (1).png" alt="LinkedIn"></a>
+      <a href="https://github.com/jikumarneeraj" target="_blank"><img src="social (1).png" alt="GitHub"></a>
+    </div>
+    <div class="contact-details" style="font-weight: bolder;font-size: larger;">
+      You can reach out to me any of the given social media links.
+    </div>
+  </section>
+
+  <footer>
+    &copy;  Neeraj's Copyright -2024
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const navLinks = document.querySelectorAll('nav a');
+      const sections = document.querySelectorAll('section');
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          const targetSection = document.getElementById(targetId);
+
+          sections.forEach(section => {
+            section.classList.remove('active');
+          });
+
+          targetSection.classList.add('active');
+
+          // Scroll to the target section without hiding the header
+          window.scrollTo({
+            top: targetSection.offsetTop,
+            behavior: 'smooth'
+          });
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
